@@ -3,15 +3,18 @@ import { NgModule } from '@angular/core';
 import { SlideMenuModule } from 'cuppa-ng2-slidemenu/cuppa-ng2-slidemenu';
 
 import { AppComponent } from './app.component';
-
+import { AppRoutingModule } from './app-routing.module';
+import { BitbucketComponent } from './bitbucket/bitbucket.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BitbucketComponent
   ],
   imports: [
     SlideMenuModule,
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
