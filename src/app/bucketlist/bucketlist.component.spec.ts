@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BitbucketComponent } from './bitbucket.component';
+import { BucketlistComponent } from './bucketlist.component';
 
-describe('BitbucketComponent', () => {
-  let component: BitbucketComponent;
-  let fixture: ComponentFixture<BitbucketComponent>;
+describe('BucketlistComponent', () => {
+  let component: BucketlistComponent;
+  let fixture: ComponentFixture<BucketlistComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BitbucketComponent ]
+      declarations: [ BucketlistComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BitbucketComponent);
+    fixture = TestBed.createComponent(BucketlistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
