@@ -19,8 +19,7 @@ export class AuthenticationService {
     login(username: string, password: string) {
         console.log('login');
         return this.http.post<User>('/api/jwt-auth/', { username : username, password : password })
-            .do(res => this.setSession)
-            .shareReplay();
+            .toPromise().then(res => this.setSession);
     }
 
     private setSession(authResult) {
