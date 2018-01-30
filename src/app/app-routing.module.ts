@@ -11,7 +11,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: HomeComponent, canActivate: [CanActivateViaAuthGuard] },
   { path: 'bitbucket', component: BucketlistComponent, canActivate: [CanActivateViaAuthGuard]  },
-  
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
 ];
