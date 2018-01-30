@@ -1,6 +1,11 @@
-<div>
-  <cuppa-slidemenu [menulist]="menuItemsArray" (open)="onMenuOpen()" (close)="onMenuClose()" (onItemSelect)="onItemSelect($event)"></cuppa-slidemenu>
-</div>
-<div>
-  <router-outlet></router-outlet>
+<!-- main app container -->
+<cuppa-slidemenu [menulist]="menuItemsArray" (open)="onMenuOpen()" (close)="onMenuClose()" (onItemSelect)="onItemSelect($event)"></cuppa-slidemenu>
+
+<div class="jumbotron">
+  <div class="container">
+    <div class="col-sm-8 col-sm-offset-2">
+    
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
