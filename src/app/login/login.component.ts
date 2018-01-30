@@ -1,39 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
- 
+
 import { AuthenticationService } from '../common/authentication.service';
+import { FormGroup } from '@angular/forms/src/model';
+import { FormBuilder } from '@angular/forms';
+import { Validators } from '@angular/forms';
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+    form: FormGroup;
 
-  model: any = {};
-  loading = false;
-  error = '';
+    constructor(private fb: FormBuilder,
+        private authService: AuthenticationService,
+        private router: Router) {
+    }
 
-  constructor(
-      private router: Router,
-      private authenticationService: AuthenticationService) { }
+    ngOnInit() {
+        this.form = this.fb.group({
+            email: ['', Validators.required],
+            password: ['', Validators.required]
+        });
+    }
 
-  ngOnInit() {
-      // reset login status
-      this.authenticationService.logout();
-  }
+    login() {
+        const val = this.form.value;
 
-  login() {
-      this.loading = true;
-      this.authenticationService.login(this.model.username, this.model.password)
-          .then(result => {
-              if (result === true) {
-                  // login successful
-                  this.router.navigate(['/']);
-              } else {
-                  // login failed
-                  this.error = 'Username or password is incorrect';
-                  this.loading = false;
-              }
-          });
-  }
+        if (val.email && val.password) {
+            this.authService.login(val.email, val.password)
+                .subscribe(
+                () => {
+                    console.log('User is logged in');
+                    this.router.navigateByUrl('/');
+                }
+                );
+        }
+    }
 }
