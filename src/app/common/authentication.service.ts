@@ -18,7 +18,7 @@ export class AuthenticationService {
 
     login(username: string, password: string) {
         console.log('login');
-        return this.http.post<User>('/api/jwt-auth/', { username : username, password : password })
+        return this.http.post('/api/jwt-auth/', { username : username, password : password })
             .toPromise().then(res => this.setSession);
     }
 
