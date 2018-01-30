@@ -14,13 +14,8 @@ export class UserService {
     }
 
     getUsers(): Promise<User[]> {
-        // add authorization header with jwt token
-        const headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
-        const options = new RequestOptions({ headers: headers });
 
-        // get users from api
-
-        return this.http
+      return this.http
       .get('/api/users')
       .toPromise()
       .then((response) => {
