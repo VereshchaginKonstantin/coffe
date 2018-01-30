@@ -17,12 +17,14 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string) {
+        console.log('login');
         return this.http.post<User>('/api/jwt-auth/', { username : username, password : password })
             .do(res => this.setSession)
             .shareReplay();
     }
 
     private setSession(authResult) {
+        console.log('setSession');
         console.log(authResult.expiresIn);
         const expiresAt = moment().add(authResult.expiresIn, 'second');
         console.log(expiresAt);
