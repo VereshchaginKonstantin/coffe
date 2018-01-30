@@ -17,7 +17,7 @@ export class AuthenticationService {
     }
 
     login(email: string, password: string) {
-        return this.http.post<User>('/api/jwt-auth', { email, password })
+        return this.http.post<User>('/api/jwt-auth/', { email, password })
             .do(res => this.setSession)
             .shareReplay();
     }
