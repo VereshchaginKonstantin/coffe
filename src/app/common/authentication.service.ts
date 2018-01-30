@@ -23,10 +23,13 @@ export class AuthenticationService {
     }
 
     private setSession(authResult) {
+        console.log(authResult.expiresIn);
         const expiresAt = moment().add(authResult.expiresIn, 'second');
+        console.log(expiresAt);
 
-        localStorage.setItem('id_token', authResult.idToken);
+        localStorage.setItem('id_token', authResult.token);
         localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
+        console.log(authResult.token);
     }
 
     logout() {
