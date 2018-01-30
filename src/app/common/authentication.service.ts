@@ -19,12 +19,14 @@ export class AuthenticationService {
     login(username: string, password: string) {
         console.log('login');
         return this.http.post('/api/jwt-auth/', { username : username, password : password })
-            .toPromise().then(res => this.setSession);
+            .toPromise()
+            .then(res => this.setSession)
+            .catch(this.handleError);
     }
 
     private setSession(authResult) {
         console.log('setSession');
-        console.log(authResult.expiresIn);
+        console.log(authResult.exkiexiex);
         const expiresAt = moment().add(authResult.expiresIn, 'second');
         console.log(expiresAt);
 
@@ -51,4 +53,9 @@ export class AuthenticationService {
         const expiresAt = JSON.parse(expiration);
         return moment(expiresAt);
     }
+
+    private handleError(error: any): Promise<any> {
+        console.error('An error occurred', error);
+        return Promise.reject(error.message || error);
+      }
 }
