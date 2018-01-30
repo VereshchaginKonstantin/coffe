@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
 
         if (val.login && val.password) {
             this.authService.login(val.login, val.password)
-                .subscribe(
+                .then(
                 () => {
                     console.log('User is logged in');
                     this.router.navigateByUrl('/');
