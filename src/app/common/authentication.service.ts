@@ -21,17 +21,15 @@ export class AuthenticationService {
         return this.http.post('/api/jwt-auth/', { username : username, password : password })
             .toPromise()
             .then(res => {
-                console.log('post then');
-                console.log(res);
                 this.setSession(res);
             })
             .catch(this.handleError);
     }
 
     private setSession(authResult) {
-        console.log('setSession');
-        console.log(authResult.exkiexiex);
         const expiresAt = moment().add(authResult.expiresIn, 'second');
+        console.log(authResult.token);
+        console.log(authResult.expiresIn);
         console.log(expiresAt);
 
         localStorage.setItem('id_token', authResult.token);
@@ -45,6 +43,8 @@ export class AuthenticationService {
     }
 
     public isLoggedIn() {
+        console.log('isLoggedIn');
+        console.log(this.getExpiration());
         return moment().isBefore(this.getExpiration());
     }
 
