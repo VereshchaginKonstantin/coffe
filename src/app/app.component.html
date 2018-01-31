@@ -1,5 +1,8 @@
 <!-- main app container -->
-<cuppa-slidemenu [menulist]="menuItemsArray" (open)="onMenuOpen()" (close)="onMenuClose()" (onItemSelect)="onItemSelect($event)"></cuppa-slidemenu>
+<div *ngIf="authService.isLoggedIn()">
+    <cuppa-slidemenu [menulist]="menuItemsArray" (open)="onMenuOpen()" (close)="onMenuClose()" (onItemSelect)="onItemSelect($event)"></cuppa-slidemenu>
+
+</div>
 
 <div class="jumbotron">
   <div class="container">

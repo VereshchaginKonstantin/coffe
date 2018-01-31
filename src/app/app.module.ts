@@ -14,6 +14,7 @@ import { CanActivateViaAuthGuard } from './can-activate-via-auth.guard';
 import { AuthenticationService } from './common/authentication.service';
 import { UserService } from './common/user.service';
 import { AuthHttpInterceptor } from './auth-http-interceptor';
+import { BucketlistService } from './common/bucketlist.service';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { AuthHttpInterceptor } from './auth-http-interceptor';
     CanActivateViaAuthGuard,
     AuthenticationService,
     UserService,
+    BucketlistService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthHttpInterceptor,

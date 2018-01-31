@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { AuthenticationService } from './common/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ export class AppComponent {
     { 'title': 'Домой', 'routerLink': '/' },
   ];
 
-  constructor(private router: Router, private location: Location) {
+  constructor(private router: Router, private location: Location, public authService: AuthenticationService) {
 
   }
 

@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
             login: ['', Validators.required],
             password: ['', Validators.required]
         });
+        this.authService.logout();
     }
 
     login() {
