@@ -11,7 +11,8 @@ import { Location } from '@angular/common';
 export class AppComponent {
   title = 'app';
   private menuItemsArray: any[] = [
-    { "title": "Electricity", "routerLink": "/bitbucket" }, 
+    { 'title': 'Корзина', 'routerLink': '/bitbucket' },
+    { 'title': 'Домой', 'routerLink': '/' },
   ];
 
   constructor(private router: Router, private location: Location) {
@@ -19,10 +20,10 @@ export class AppComponent {
   }
 
   public onMenuClose() {
-    console.log("menu closed");
+    console.log('menu closed');
   }
   public onMenuOpen() {
-    console.log("menu Opened");
+    console.log('menu Opened');
   }
   private onItemSelect(item: any) {
     console.log(item);

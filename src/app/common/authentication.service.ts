@@ -8,6 +8,7 @@ import 'rxjs/add/operator/shareReplay';
 
 import { User } from './dto/user';
 import * as moment from 'moment';
+import { pathAdd } from '../globalConstant';
 
 @Injectable()
 export class AuthenticationService {
@@ -18,7 +19,7 @@ export class AuthenticationService {
 
     login(username: string, password: string) {
         console.log('login');
-        return this.http.post('/api/jwt-auth/', { username : username, password : password })
+        return this.http.post(pathAdd + '/api/jwt-auth/', { username : username, password : password })
             .toPromise()
             .then(res => {
                 this.setSession(res);
@@ -27,9 +28,9 @@ export class AuthenticationService {
     }
 
     private setSession(authResult) {
-        const expiresAt = moment().add(authResult.expiresIn, 'second');
+        const expiresAt = moment().add(authResult.until, 'second');
         console.log(authResult.token);
-        console.log(authResult.expiresIn);
+        console.log(authResult.until);
         console.log(expiresAt);
 
         localStorage.setItem('id_token', authResult.token);
@@ -44,7 +45,8 @@ export class AuthenticationService {
 
     public isLoggedIn() {
         console.log('isLoggedIn');
-        console.log(this.getExpiration());
+        console.log('expired  - ' + this.getExpiration().toLocaleString());
+        console.log('isBefore  - ' + moment().isBefore(this.getExpiration()));
         return moment().isBefore(this.getExpiration());
     }
 
