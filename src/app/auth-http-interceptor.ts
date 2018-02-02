@@ -8,7 +8,6 @@ export class AuthHttpInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>,
         next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log('AuthInterceptor');
         const idToken = localStorage.getItem('id_token');
 
         if (idToken) {
@@ -16,7 +15,6 @@ export class AuthHttpInterceptor implements HttpInterceptor {
                 headers: req.headers.set('Authorization',
                     'JWT ' + idToken)
             });
-            console.log(cloned);
 
             return next.handle(cloned);
         } else {

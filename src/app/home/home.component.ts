@@ -10,14 +10,12 @@ import { UserService } from '../common/user.service';
 })
 export class HomeComponent implements OnInit {
 
-  users: User[] = [];
+  
 
-  constructor(private userService: UserService) { }
+  constructor() { }
 
   ngOnInit() {
     // get users from secure api end point
-    this.userService.getUsers()
-      .then(users => this.users = users);
   }
 
 }

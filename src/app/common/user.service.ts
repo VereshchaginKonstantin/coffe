@@ -11,8 +11,7 @@ import { pathAdd } from '../globalConstant';
 @Injectable()
 export class UserService {
     constructor(
-        public http: HttpClient,
-        private authenticationService: AuthenticationService) {
+        public http: HttpClient) {
     }
 
     getUsers(): Promise<User[]> {

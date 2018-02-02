@@ -12,8 +12,12 @@ import { AuthenticationService } from './common/authentication.service';
 export class AppComponent {
   title = 'app';
   private menuItemsArray: any[] = [
-    { 'title': 'Корзина', 'routerLink': '/bitbucket' },
     { 'title': 'Домой', 'routerLink': '/' },
+    { 'title': 'Наша выпечка', 'routerLink': '/menu' },
+    { 'title': 'Статьи', 'routerLink': '/articles' },
+    { 'title': 'О нас', 'routerLink': '/about' },
+    { 'title': 'Контакты', 'routerLink': '/contacts' },
+    { 'title': 'Корзина', 'routerLink': '/bitbucket' },
   ];
 
   constructor(private router: Router, private location: Location, public authService: AuthenticationService) {

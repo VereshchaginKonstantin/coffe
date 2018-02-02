@@ -1,5 +1,11 @@
 <div>
     Бакеты:
+    <div>
+        Список пользователей системы:
+        <ul>
+            <li *ngFor="let user of users">{{user.username}}</li>
+        </ul>
+    </div>
     <ul>
         <li *ngFor="let bucket of buckets">{{bucket.name}}</li>
     </ul>

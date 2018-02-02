@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthenticationService } from '../common/authentication.service';
 import { FormGroup } from '@angular/forms/src/model';
@@ -13,30 +13,30 @@ import { Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
     form: FormGroup;
 
-    constructor(private fb: FormBuilder,
+    model: any = {};
+    loading = false;
+    returnUrl: string;
+
+    constructor(private route: ActivatedRoute,
         private authService: AuthenticationService,
         private router: Router) {
     }
 
     ngOnInit() {
-        this.form = this.fb.group({
-            login: ['', Validators.required],
-            password: ['', Validators.required]
-        });
         this.authService.logout();
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
     login() {
-        const val = this.form.value;
-
-        if (val.login && val.password) {
-            this.authService.login(val.login, val.password)
-                .then(
-                () => {
-                    console.log('User is logged in');
-                    this.router.navigateByUrl('/');
-                }
-                );
-        }
+        this.loading = true;
+        this.authService.login(this.model.username, this.model.password)
+            .then(
+            data => {
+                this.router.navigate([this.returnUrl]);
+            },
+            error => {
+                console.error(error);
+                this.loading = false;
+            });
     }
 }

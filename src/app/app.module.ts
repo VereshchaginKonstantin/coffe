@@ -15,13 +15,23 @@ import { AuthenticationService } from './common/authentication.service';
 import { UserService } from './common/user.service';
 import { AuthHttpInterceptor } from './auth-http-interceptor';
 import { BucketlistService } from './common/bucketlist.service';
+import { AboutComponent } from './about/about.component';
+import { MenuComponent } from './menu/menu.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { ArticlesComponent } from './articles/articles.component';
+import { StatusComponent } from './status/status.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BucketlistComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    AboutComponent,
+    MenuComponent,
+    ContactsComponent,
+    ArticlesComponent,
+    StatusComponent
   ],
   imports: [
     SlideMenuModule,

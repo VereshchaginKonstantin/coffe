@@ -1,0 +1,8 @@
+<div class='right'>
+  <div *ngIf="authService.isLoggedOut()">
+    <a [routerLink]="['/login']">Войти в систему</a>
+  </div>
+  <div *ngIf="authService.isLoggedIn()"> 
+    <a [routerLink]="['/login']"> Выйти, {{user}}!</a>
+  </div> 
+</div>

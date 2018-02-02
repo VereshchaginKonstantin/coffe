@@ -1,13 +1,14 @@
 <!-- main app container -->
-<div *ngIf="authService.isLoggedIn()">
-    <cuppa-slidemenu [menulist]="menuItemsArray" (open)="onMenuOpen()" (close)="onMenuClose()" (onItemSelect)="onItemSelect($event)"></cuppa-slidemenu>
-
+<div class="container">
+  <cuppa-slidemenu [menulist]="menuItemsArray" (open)="onMenuOpen()" (close)="onMenuClose()" (onItemSelect)="onItemSelect($event)"></cuppa-slidemenu>
+  <img src="https://cuppalabs.github.io/img/cuppa-logo-coffee11.png" height="32" alt="">
+  <app-status></app-status>
 </div>
+
 
 <div class="jumbotron">
   <div class="container">
     <div class="col-sm-8 col-sm-offset-2">
-    
       <router-outlet></router-outlet>
     </div>
   </div>
