@@ -14,7 +14,6 @@ export class StatusComponent implements OnInit {
   constructor(public authService: AuthenticationService) { }
 
   ngOnInit() {
-    this.user = this.authService.GetUser();
+    this.authService.getUser().subscribe(newUser => this.user = newUser);
   }
-
 }

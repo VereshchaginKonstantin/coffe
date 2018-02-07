@@ -15,11 +15,14 @@ import { AuthenticationService } from './common/authentication.service';
 import { UserService } from './common/user.service';
 import { AuthHttpInterceptor } from './auth-http-interceptor';
 import { BucketlistService } from './common/bucketlist.service';
+import { AlertService } from './common/alert.service';
 import { AboutComponent } from './about/about.component';
 import { MenuComponent } from './menu/menu.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { StatusComponent } from './status/status.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,9 @@ import { StatusComponent } from './status/status.component';
     MenuComponent,
     ContactsComponent,
     ArticlesComponent,
-    StatusComponent
+    StatusComponent,
+    RegistrationComponent,
+    AlertComponent
   ],
   imports: [
     SlideMenuModule,
@@ -47,11 +52,12 @@ import { StatusComponent } from './status/status.component';
     AuthenticationService,
     UserService,
     BucketlistService,
+    AlertService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthHttpInterceptor,
       multi: true
-  }
+    }
   ],
   bootstrap: [AppComponent]
 })

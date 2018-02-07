@@ -5,6 +5,7 @@ import { AuthenticationService } from '../common/authentication.service';
 import { FormGroup } from '@angular/forms/src/model';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { AlertService } from '../common/alert.service';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
 
     constructor(private route: ActivatedRoute,
         private authService: AuthenticationService,
-        private router: Router) {
+        private router: Router,
+        private alertService: AlertService) {
     }
 
     ngOnInit() {
@@ -35,7 +37,10 @@ export class LoginComponent implements OnInit {
                 this.router.navigate([this.returnUrl]);
             },
             error => {
-                console.error(error);
+                this.alertService.error(error.error);
+                this.loading = false;
+            }).catch(  error => {
+                this.alertService.error(error.error);
                 this.loading = false;
             });
     }

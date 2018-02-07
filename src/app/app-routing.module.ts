@@ -10,6 +10,7 @@ import { AboutComponent } from './about/about.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { MenuComponent } from './menu/menu.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -17,8 +18,9 @@ const routes: Routes = [
   { path: 'articles', component: ArticlesComponent },
   { path: 'contacts', component: ContactsComponent },
   { path: 'menu', component: MenuComponent },
-  { path: '', component: HomeComponent  }, 
-  { path: 'bitbucket', component: BucketlistComponent, canActivate: [CanActivateViaAuthGuard]  },
+  { path: '', component: HomeComponent },
+  { path: 'registration', component: RegistrationComponent },
+  { path: 'bitbucket', component: BucketlistComponent, canActivate: [CanActivateViaAuthGuard] },
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
 ];
@@ -28,7 +30,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forRoot(routes)
   ],
-  exports: [ RouterModule ],
+  exports: [RouterModule],
   declarations: []
 })
 
